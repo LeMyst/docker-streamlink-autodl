@@ -1,13 +1,13 @@
-FROM python:3.13.0b2-slim-bullseye
-LABEL maintainer="Adriel"
+FROM python:3.12
+LABEL maintainer="LeMyst"
 
-ENV streamlink_version=6.7.2
+ENV streamlink_version=6.8.1
 ENV twitch_version=1.1.22
 
 RUN apt-get update && apt-get -y install gosu jq ffmpeg
 
 # Streamlink
-RUN pip3 install "streamlink==${streamlink_version}"
+RUN pip install "streamlink==${streamlink_version}"
 
 # Twitch CLI
 ADD "https://github.com/twitchdev/twitch-cli/releases/download/v${twitch_version}/twitch-cli_${twitch_version}_Linux_x86_64.tar.gz" /opt/
